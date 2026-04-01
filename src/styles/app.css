@@ -156,6 +156,9 @@ h3 {
 .secondary-link,
 .product-meta button,
 .product-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 999px;
   padding: 12px 18px;
   border: 1px solid transparent;
@@ -232,6 +235,7 @@ h1 {
 }
 
 .hero-actions {
+  flex-wrap: wrap;
   gap: 14px;
   margin: 28px 0;
 }
@@ -854,12 +858,135 @@ h1 {
   }
 
   .topbar {
-    padding: 14px;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 16px;
     border-radius: 22px;
   }
 
+  .brand {
+    width: 100%;
+    gap: 10px;
+  }
+
+  .brand-mark {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+  }
+
+  .brand-copy strong {
+    font-size: 1.15rem;
+  }
+
+  .brand-copy small {
+    font-size: 0.68rem;
+  }
+
+  .main-nav {
+    width: 100%;
+    gap: 12px;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 4px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .main-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .main-nav a {
+    flex: 0 0 auto;
+    padding: 10px 14px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid var(--line);
+  }
+
+  .header-actions {
+    width: 100%;
+  }
+
+  .whatsapp-link {
+    width: 100%;
+  }
+
   h1 {
-    font-size: 3.2rem;
+    font-size: clamp(2.8rem, 13vw, 4rem);
+    line-height: 0.9;
+    max-width: 9ch;
+  }
+
+  .eyebrow {
+    font-size: 0.95rem;
+  }
+
+  .hero-text {
+    font-size: 1.02rem;
+    line-height: 1.55;
+    max-width: 32ch;
+  }
+
+  .hero-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .hero-actions .primary-link,
+  .hero-actions .secondary-link {
+    width: 100%;
+    min-height: 54px;
+  }
+
+  .hero-metrics {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .hero-metrics li:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .hero-card {
+    min-height: auto;
+    padding: 18px;
+    border-radius: 28px;
+  }
+
+  .hero-visual {
+    position: relative;
+    margin: 0;
+    min-height: 260px;
+    border-radius: 22px;
+  }
+
+  .hero-piece-image {
+    object-position: center center;
+  }
+
+  .product-spotlight {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    margin-top: 16px;
+    padding: 0 4px 4px;
+  }
+
+  .product-spotlight h2 {
+    font-size: clamp(2.2rem, 12vw, 3.2rem);
+    line-height: 0.9;
+  }
+
+  .product-spotlight p {
+    max-width: none;
+  }
+
+  .badge {
+    margin-bottom: 14px;
   }
 
   .product-info h3 {
