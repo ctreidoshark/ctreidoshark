@@ -1,0 +1,165 @@
+import { useMemo, useState } from "react";
+import {
+  benefits,
+  categories,
+  contactItems,
+  heroMetrics,
+  heroSpotlight,
+  navigationLinks,
+  products,
+  store,
+} from "./data/storeContent";
+import { buildWhatsAppCheckoutLink, buildWhatsAppLink } from "./utils/whatsapp";
+import Header from "./components/Header";
+import HeroSection from "./components/HeroSection";
+import CategoryStrip from "./components/CategoryStrip";
+import ProductsSection from "./components/ProductsSection";
+import FeatureBanner from "./components/FeatureBanner";
+import BenefitsSection from "./components/BenefitsSection";
+import Footer from "./components/Footer";
+import CartDrawer from "./components/CartDrawer";
+
+export default function App() {
+  const [cartItems, setCartItems] = useState([]);
+  const [cartOpen, setCartOpen] = useState(false);
+  const [filters, setFilters] = useState({
+    category: "todos",
+    gender: "todos",
+    size: "todos",
+  });
+
+  const total = useMemo(
+    () => cartItems.reduce((sum, item) => sum + item.price, 0),
+    [cartItems]
+  );
+
+  const catalogProducts = useMemo(
+    () => products.filter((product) => Boolean(product.image)),
+    []
+  );
+
+  const filterOptions = useMemo(
+    () => ({
+      categories: [
+        { value: "todos", label: "Todas as pecas" },
+        ...Array.from(new Set(catalogProducts.map((product) => product.category))).map((value) => ({
+          value,
+          label: value.charAt(0).toUpperCase() + value.slice(1),
+        })),
+      ],
+      genders: [
+        { value: "todos", label: "Todos os generos" },
+        { value: "masculino", label: "Masculino" },
+        { value: "feminino", label: "Feminino" },
+        { value: "unissex", label: "Unissex" },
+      ],
+      sizes: [
+        { value: "todos", label: "Todos os tamanhos" },
+        ...Array.from(new Set(catalogProducts.flatMap((product) => product.sizes))).map((value) => ({
+          value,
+          label: value,
+        })),
+      ],
+    }),
+    [catalogProducts]
+  );
+
+  const filteredProducts = useMemo(
+    () =>
+      catalogProducts.filter((product) => {
+        const matchesCategory =
+          filters.category === "todos" || product.category === filters.category;
+        const matchesGender = filters.gender === "todos" || product.gender === filters.gender;
+        const matchesSize = filters.size === "todos" || product.sizes.includes(filters.size);
+
+        return matchesCategory && matchesGender && matchesSize;
+      }),
+    [catalogProducts, filters]
+  );
+
+  const whatsappLink = useMemo(
+    () => buildWhatsAppLink(store.whatsappNumber),
+    []
+  );
+
+  const checkoutLink = useMemo(
+    () => buildWhatsAppCheckoutLink(store.whatsappNumber, cartItems, total),
+    [cartItems, total]
+  );
+
+  function openCart() {
+    setCartOpen(true);
+  }
+
+  function closeCart() {
+    setCartOpen(false);
+  }
+
+  function addToCart(product, selectedSize) {
+    setCartItems((current) => [
+      ...current,
+      { ...product, selectedSize, cartId: crypto.randomUUID() },
+    ]);
+    openCart();
+  }
+
+  function removeFromCart(cartId) {
+    setCartItems((current) => current.filter((item) => item.cartId !== cartId));
+  }
+
+  function updateFilter(key, value) {
+    setFilters((current) => ({ ...current, [key]: value }));
+  }
+
+  function clearFilters() {
+    setFilters({
+      category: "todos",
+      gender: "todos",
+      size: "todos",
+    });
+  }
+
+  return (
+    <>
+      <div className="site-shell">
+        <Header
+          brand={store}
+          navigationLinks={navigationLinks}
+          cartCount={cartItems.length}
+          cartOpen={cartOpen}
+          whatsappLink={whatsappLink}
+          onOpenCart={openCart}
+        />
+
+        <main id="inicio">
+          <HeroSection store={store} spotlight={heroSpotlight} metrics={heroMetrics} />
+          <CategoryStrip categories={categories} />
+          <ProductsSection
+            products={filteredProducts}
+            totalProducts={catalogProducts.length}
+            filters={filters}
+            filterOptions={filterOptions}
+            onAddToCart={addToCart}
+            onFilterChange={updateFilter}
+            onClearFilters={clearFilters}
+          />
+          <FeatureBanner />
+          <BenefitsSection benefits={benefits} />
+        </main>
+
+        <Footer store={store} contactItems={contactItems} />
+      </div>
+
+      <CartDrawer
+        cartItems={cartItems}
+        cartOpen={cartOpen}
+        checkoutLink={checkoutLink}
+        total={total}
+        onCloseCart={closeCart}
+        onRemoveFromCart={removeFromCart}
+      />
+
+      <div className="overlay" hidden={!cartOpen} onClick={closeCart} aria-hidden={!cartOpen}></div>
+    </>
+  );
+}
