@@ -862,59 +862,73 @@ h1 {
   }
 
   .topbar {
-    gap: 16px;
+    position: static;
+    gap: 12px;
     align-items: center;
     justify-content: space-between;
-    padding: 16px;
-    border-radius: 22px;
+    padding: 12px 14px;
+    border-radius: 20px;
   }
 
   .brand {
     width: auto;
     flex: 1 1 auto;
-    gap: 10px;
+    gap: 8px;
     min-width: 0;
   }
 
   .brand-mark {
-    width: 42px;
-    height: 42px;
-    border-radius: 12px;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
   }
 
   .brand-copy strong {
-    font-size: 1.15rem;
+    font-size: 0.95rem;
     white-space: nowrap;
   }
 
   .brand-copy small {
-    font-size: 0.68rem;
+    font-size: 0.58rem;
+    letter-spacing: 0.06em;
   }
 
   .main-nav {
+    order: 3;
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 2px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .main-nav::-webkit-scrollbar {
+    display: none;
   }
 
   .main-nav a {
+    flex: 0 0 auto;
     text-align: center;
-    padding: 11px 12px;
-    border-radius: 18px;
+    padding: 8px 12px;
+    border-radius: 999px;
     background: rgba(255, 255, 255, 0.72);
     border: 1px solid var(--line);
-    font-size: 0.98rem;
+    font-size: 0.9rem;
   }
 
   .header-actions {
+    order: 2;
     width: auto;
     flex: 0 0 auto;
   }
 
   .whatsapp-link {
-    min-height: 44px;
-    padding: 10px 16px;
+    min-height: 40px;
+    padding: 8px 14px;
+    white-space: nowrap;
   }
 
   h1 {
