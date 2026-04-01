@@ -9,8 +9,8 @@ export const store = {
   heroText:
     "foco em camisas UV, shorts, regatas e pedidos personalizados pelo WhatsApp.",
   footerTitle: "reidoshark pronta para vender.",
-  whatsappNumber: "5521999999999",
-  whatsappLabel: "WhatsApp: (21) 99999-9999",
+  whatsappNumber: "558300",
+  whatsappLabel: "WhatsApp: (83) 000",
   email: "contato@reidoshark.com.br",
 };
 

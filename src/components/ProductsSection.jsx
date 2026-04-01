@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { formatCurrency } from "../utils/currency";
+import { buildWhatsAppProductLink } from "../utils/whatsapp";
 
 export default function ProductsSection({
   products,
   totalProducts,
   filters,
   filterOptions,
-  onAddToCart,
+  whatsappNumber,
   onFilterChange,
   onClearFilters,
 }) {
@@ -155,9 +156,18 @@ export default function ProductsSection({
 
                 <div className="product-meta">
                   <strong>{formatCurrency(product.price)}</strong>
-                  <button type="button" onClick={() => onAddToCart(product, selectedSizes[product.id] ?? product.sizes[0])}>
-                    Adicionar
-                  </button>
+                  <a
+                    href={buildWhatsAppProductLink(
+                      whatsappNumber,
+                      product,
+                      selectedSizes[product.id] ?? product.sizes[0]
+                    )}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="product-action"
+                  >
+                    Pedir no WhatsApp
+                  </a>
                 </div>
               </div>
             </article>

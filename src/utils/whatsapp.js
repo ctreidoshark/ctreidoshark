@@ -4,6 +4,15 @@ export function buildWhatsAppLink(number) {
   return `https://wa.me/${number}`;
 }
 
+export function buildWhatsAppProductLink(number, product, selectedSize) {
+  const sizeLabel = selectedSize ? ` no tamanho ${selectedSize}` : "";
+  const message = encodeURIComponent(
+    `Oi! Tenho interesse em ${product.name}${sizeLabel}. Pode me passar mais detalhes?`
+  );
+
+  return `${buildWhatsAppLink(number)}?text=${message}`;
+}
+
 export function buildWhatsAppCheckoutLink(number, cartItems, total) {
   if (!cartItems.length) {
     return buildWhatsAppLink(number);

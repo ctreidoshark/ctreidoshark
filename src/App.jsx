@@ -9,7 +9,7 @@ import {
   products,
   store,
 } from "./data/storeContent";
-import { buildWhatsAppCheckoutLink, buildWhatsAppLink } from "./utils/whatsapp";
+import { buildWhatsAppLink } from "./utils/whatsapp";
 import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
 import CategoryStrip from "./components/CategoryStrip";
@@ -17,21 +17,13 @@ import ProductsSection from "./components/ProductsSection";
 import FeatureBanner from "./components/FeatureBanner";
 import BenefitsSection from "./components/BenefitsSection";
 import Footer from "./components/Footer";
-import CartDrawer from "./components/CartDrawer";
 
 export default function App() {
-  const [cartItems, setCartItems] = useState([]);
-  const [cartOpen, setCartOpen] = useState(false);
   const [filters, setFilters] = useState({
     category: "todos",
     gender: "todos",
     size: "todos",
   });
-
-  const total = useMemo(
-    () => cartItems.reduce((sum, item) => sum + item.price, 0),
-    [cartItems]
-  );
 
   const catalogProducts = useMemo(
     () => products.filter((product) => Boolean(product.image)),
@@ -82,31 +74,6 @@ export default function App() {
     []
   );
 
-  const checkoutLink = useMemo(
-    () => buildWhatsAppCheckoutLink(store.whatsappNumber, cartItems, total),
-    [cartItems, total]
-  );
-
-  function openCart() {
-    setCartOpen(true);
-  }
-
-  function closeCart() {
-    setCartOpen(false);
-  }
-
-  function addToCart(product, selectedSize) {
-    setCartItems((current) => [
-      ...current,
-      { ...product, selectedSize, cartId: crypto.randomUUID() },
-    ]);
-    openCart();
-  }
-
-  function removeFromCart(cartId) {
-    setCartItems((current) => current.filter((item) => item.cartId !== cartId));
-  }
-
   function updateFilter(key, value) {
     setFilters((current) => ({ ...current, [key]: value }));
   }
@@ -125,10 +92,7 @@ export default function App() {
         <Header
           brand={store}
           navigationLinks={navigationLinks}
-          cartCount={cartItems.length}
-          cartOpen={cartOpen}
           whatsappLink={whatsappLink}
-          onOpenCart={openCart}
         />
 
         <main id="inicio">
@@ -139,7 +103,7 @@ export default function App() {
             totalProducts={catalogProducts.length}
             filters={filters}
             filterOptions={filterOptions}
-            onAddToCart={addToCart}
+            whatsappNumber={store.whatsappNumber}
             onFilterChange={updateFilter}
             onClearFilters={clearFilters}
           />
@@ -149,17 +113,6 @@ export default function App() {
 
         <Footer store={store} contactItems={contactItems} />
       </div>
-
-      <CartDrawer
-        cartItems={cartItems}
-        cartOpen={cartOpen}
-        checkoutLink={checkoutLink}
-        total={total}
-        onCloseCart={closeCart}
-        onRemoveFromCart={removeFromCart}
-      />
-
-      <div className="overlay" hidden={!cartOpen} onClick={closeCart} aria-hidden={!cartOpen}></div>
     </>
   );
 }

@@ -1,13 +1,6 @@
 import { useState } from "react";
 
-export default function Header({
-  brand,
-  navigationLinks,
-  cartCount,
-  cartOpen,
-  whatsappLink,
-  onOpenCart,
-}) {
+export default function Header({ brand, navigationLinks, whatsappLink }) {
   const [logoVisible, setLogoVisible] = useState(Boolean(brand.logo));
 
   return (
@@ -43,16 +36,6 @@ export default function Header({
         <a className="whatsapp-link" href={whatsappLink} target="_blank" rel="noreferrer">
           WhatsApp
         </a>
-        <button
-          className="cart-button"
-          type="button"
-          aria-expanded={cartOpen}
-          aria-controls="cartDrawer"
-          onClick={onOpenCart}
-        >
-          Carrinho
-          <span>{cartCount}</span>
-        </button>
       </div>
     </header>
   );
