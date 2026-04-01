@@ -212,6 +212,10 @@ h3 {
   margin: 0 0 8px;
 }
 
+.eyebrow:empty {
+  display: none;
+}
+
 h1,
 h2,
 h3,
@@ -859,14 +863,17 @@ h1 {
 
   .topbar {
     gap: 16px;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: space-between;
     padding: 16px;
     border-radius: 22px;
   }
 
   .brand {
-    width: 100%;
+    width: auto;
+    flex: 1 1 auto;
     gap: 10px;
+    min-width: 0;
   }
 
   .brand-mark {
@@ -877,6 +884,7 @@ h1 {
 
   .brand-copy strong {
     font-size: 1.15rem;
+    white-space: nowrap;
   }
 
   .brand-copy small {
@@ -885,38 +893,35 @@ h1 {
 
   .main-nav {
     width: 100%;
-    gap: 12px;
-    overflow-x: auto;
-    flex-wrap: nowrap;
-    padding-bottom: 4px;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-
-  .main-nav::-webkit-scrollbar {
-    display: none;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
   }
 
   .main-nav a {
-    flex: 0 0 auto;
-    padding: 10px 14px;
-    border-radius: 999px;
+    text-align: center;
+    padding: 11px 12px;
+    border-radius: 18px;
     background: rgba(255, 255, 255, 0.72);
     border: 1px solid var(--line);
+    font-size: 0.98rem;
   }
 
   .header-actions {
-    width: 100%;
+    width: auto;
+    flex: 0 0 auto;
   }
 
   .whatsapp-link {
-    width: 100%;
+    min-height: 44px;
+    padding: 10px 16px;
   }
 
   h1 {
-    font-size: clamp(2.8rem, 13vw, 4rem);
-    line-height: 0.9;
-    max-width: 9ch;
+    font-size: clamp(2.55rem, 11vw, 3.6rem);
+    line-height: 0.92;
+    max-width: 12ch;
+    text-wrap: balance;
   }
 
   .eyebrow {
@@ -924,9 +929,9 @@ h1 {
   }
 
   .hero-text {
-    font-size: 1.02rem;
+    font-size: 0.98rem;
     line-height: 1.55;
-    max-width: 32ch;
+    max-width: 34ch;
   }
 
   .hero-actions {
@@ -995,7 +1000,7 @@ h1 {
 
   .hero,
   .footer {
-    padding-top: 24px;
+    padding-top: 18px;
   }
 
   .filters-panel,
