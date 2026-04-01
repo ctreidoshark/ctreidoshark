@@ -5,9 +5,9 @@ export const store = {
   logo: "/brand/logo-reidoshark.png",
   tagline: "Futevolei Performance",
   heroEyebrow: "",
-  heroTitle: "reidoshark: colecao azul com pegada forte para treino e jogo.",
+  heroTitle: "reidoshark colecao azul com pegada forte para treino e jogo.",
   heroText:
-    "Uma vitrine com identidade azul, leitura esportiva e foco em camisas UV, shorts, regatas e pedidos personalizados pelo WhatsApp.",
+    "foco em camisas UV, shorts, regatas e pedidos personalizados pelo WhatsApp.",
   footerTitle: "reidoshark pronta para vender.",
   whatsappNumber: "5521999999999",
   whatsappLabel: "WhatsApp: (21) 99999-9999",
@@ -41,7 +41,6 @@ export const heroSpotlight = {
 export const categories = [
   { label: "Linha masculina", value: "Shorts e camisas" },
   { label: "Linha feminina", value: "Top, short e regata" },
-  { label: "Acessorios", value: "Bone, munhequeira e bolsa" },
   { label: "Drop exclusivo", value: "Pecas com numeracao limitada" },
 ];
 
