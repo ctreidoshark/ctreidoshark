@@ -4,7 +4,7 @@ export const store = {
   initials: "RS",
   logo: "/brand/logo-reidoshark.png",
   tagline: "Futevolei Performance",
-  heroEyebrow: "Energia azul na areia",
+  heroEyebrow: "",
   heroTitle: "reidoshark: colecao azul com pegada forte para treino e jogo.",
   heroText:
     "Uma vitrine com identidade azul, leitura esportiva e foco em camisas UV, shorts, regatas e pedidos personalizados pelo WhatsApp.",
