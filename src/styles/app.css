@@ -1,13 +1,13 @@
 :root {
-  --bg: #f4f0e6;
-  --surface: rgba(255, 250, 241, 0.84);
-  --surface-strong: #fffdf8;
-  --text: #161616;
-  --muted: #655f56;
-  --accent: #c89d34;
-  --accent-deep: #8f6a16;
-  --line: rgba(22, 22, 22, 0.1);
-  --shadow: 0 20px 60px rgba(27, 21, 10, 0.12);
+  --bg: #eaf4ff;
+  --surface: rgba(246, 250, 255, 0.86);
+  --surface-strong: #fbfdff;
+  --text: #0f1b2d;
+  --muted: #5d708c;
+  --accent: #1677ff;
+  --accent-deep: #0c4fb3;
+  --line: rgba(15, 27, 45, 0.1);
+  --shadow: 0 20px 60px rgba(21, 61, 120, 0.14);
 }
 
 * {
@@ -23,9 +23,9 @@ body {
   font-family: "Manrope", sans-serif;
   color: var(--text);
   background:
-    radial-gradient(circle at top left, rgba(200, 157, 52, 0.22), transparent 28%),
-    radial-gradient(circle at right 18%, rgba(30, 30, 30, 0.08), transparent 22%),
-    linear-gradient(180deg, #fffdf9 0%, #f5efe3 52%, #eadfcd 100%);
+    radial-gradient(circle at top left, rgba(22, 119, 255, 0.18), transparent 30%),
+    radial-gradient(circle at right 18%, rgba(0, 197, 255, 0.16), transparent 24%),
+    linear-gradient(180deg, #f8fbff 0%, #eef5ff 48%, #dfeeff 100%);
   min-height: 100vh;
 }
 
@@ -85,7 +85,7 @@ button {
   display: grid;
   place-items: center;
   border-radius: 14px;
-  background: linear-gradient(135deg, var(--accent), #ffb000);
+  background: linear-gradient(135deg, var(--accent), #37b6ff);
   color: white;
   font-family: "Bebas Neue", sans-serif;
   font-size: 1.4rem;
@@ -175,7 +175,7 @@ h3 {
 .whatsapp-link,
 .primary-link,
 .product-meta button {
-  background: linear-gradient(135deg, var(--accent), #ff8f1f);
+  background: linear-gradient(135deg, var(--accent), #39b8ff);
   color: white;
   font-weight: 800;
 }
@@ -278,8 +278,8 @@ h1 {
   border-radius: 36px;
   border: 1px solid rgba(255, 255, 255, 0.45);
   background:
-    linear-gradient(155deg, rgba(15, 15, 15, 0.96), rgba(48, 48, 48, 0.78)),
-    linear-gradient(180deg, #e4c46e, #7e611f);
+    linear-gradient(155deg, rgba(8, 24, 55, 0.96), rgba(16, 69, 128, 0.82)),
+    linear-gradient(180deg, #3ebcff, #0c57c8);
   min-height: 460px;
   box-shadow: var(--shadow);
 }
@@ -310,8 +310,8 @@ h1 {
 
 .hero-visual.has-image {
   background:
-    linear-gradient(135deg, rgba(35, 35, 35, 0.2) 8%, rgba(205, 164, 61, 0.16) 24%, rgba(16, 16, 16, 0.22) 58%, rgba(47, 47, 47, 0.22) 100%),
-    #f8f2e6;
+    linear-gradient(135deg, rgba(7, 25, 58, 0.18) 8%, rgba(34, 129, 255, 0.14) 26%, rgba(10, 24, 48, 0.2) 58%, rgba(22, 83, 170, 0.18) 100%),
+    #eef6ff;
 }
 
 .hero-visual.has-image::after,
@@ -383,8 +383,8 @@ h1 {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 70% 30%, rgba(255, 216, 122, 0.3), transparent 22%),
-    radial-gradient(circle at 40% 82%, rgba(255, 255, 255, 0.12), transparent 18%),
+    radial-gradient(circle at 70% 30%, rgba(82, 196, 255, 0.34), transparent 24%),
+    radial-gradient(circle at 40% 82%, rgba(255, 255, 255, 0.14), transparent 18%),
     linear-gradient(135deg, transparent 15%, rgba(255, 255, 255, 0.05) 45%, transparent 70%);
 }
 
@@ -563,45 +563,45 @@ h1 {
 
 .product-visual.has-image {
   background:
-    linear-gradient(135deg, rgba(35, 35, 35, 0.16) 8%, rgba(205, 164, 61, 0.14) 24%, rgba(16, 16, 16, 0.18) 58%, rgba(47, 47, 47, 0.18) 100%),
-    #f8f2e6;
-  background-color: #f7f3ea;
+    linear-gradient(135deg, rgba(6, 31, 70, 0.14) 8%, rgba(34, 129, 255, 0.14) 24%, rgba(11, 26, 48, 0.18) 58%, rgba(35, 126, 215, 0.16) 100%),
+    #eef6ff;
+  background-color: #eef6ff;
 }
 
 .reference-piece {
   background:
-    linear-gradient(180deg, rgba(14, 14, 14, 0.18), rgba(14, 14, 14, 0.52)),
-    linear-gradient(135deg, #232323 8%, #cda43d 24%, #101010 58%, #2f2f2f 100%);
+    linear-gradient(180deg, rgba(7, 22, 46, 0.2), rgba(7, 22, 46, 0.54)),
+    linear-gradient(135deg, #0d1f42 8%, #2d87ff 28%, #091425 58%, #123f7b 100%);
 }
 
 .gold-core {
   background:
-    linear-gradient(180deg, rgba(14, 14, 14, 0.12), rgba(14, 14, 14, 0.6)),
-    linear-gradient(145deg, #d6b15b, #161616 58%, #73550f);
+    linear-gradient(180deg, rgba(8, 24, 55, 0.14), rgba(8, 24, 55, 0.6)),
+    linear-gradient(145deg, #52c4ff, #10386b 58%, #06182f);
 }
 
 .graphite-wave {
   background:
-    linear-gradient(180deg, rgba(14, 14, 14, 0.12), rgba(14, 14, 14, 0.58)),
-    linear-gradient(145deg, #484848, #181818 54%, #ccb36b);
+    linear-gradient(180deg, rgba(7, 25, 57, 0.14), rgba(7, 25, 57, 0.58)),
+    linear-gradient(145deg, #1a6ab1, #0c223f 54%, #75d9ff);
 }
 
 .gold-pulse {
   background:
-    linear-gradient(180deg, rgba(14, 14, 14, 0.08), rgba(14, 14, 14, 0.58)),
-    linear-gradient(145deg, #f0d58b, #1c1c1c 48%, #8b6815);
+    linear-gradient(180deg, rgba(8, 24, 55, 0.1), rgba(8, 24, 55, 0.58)),
+    linear-gradient(145deg, #8ee3ff, #12396f 48%, #0a1d36);
 }
 
 .sunset-drive {
   background:
-    linear-gradient(180deg, rgba(14, 14, 14, 0.1), rgba(14, 14, 14, 0.56)),
-    linear-gradient(145deg, #f6c35d, #c46b19 42%, #231915 100%);
+    linear-gradient(180deg, rgba(8, 24, 55, 0.1), rgba(8, 24, 55, 0.56)),
+    linear-gradient(145deg, #4cb8ff, #136ec6 42%, #08192f 100%);
 }
 
 .ocean-burst {
   background:
-    linear-gradient(180deg, rgba(14, 14, 14, 0.12), rgba(14, 14, 14, 0.54)),
-    linear-gradient(145deg, #72d8f7, #124564 46%, #161616 100%);
+    linear-gradient(180deg, rgba(8, 24, 55, 0.12), rgba(8, 24, 55, 0.54)),
+    linear-gradient(145deg, #79e3ff, #0f5b96 46%, #071828 100%);
 }
 
 .product-info {
@@ -621,7 +621,7 @@ h1 {
 
 .product-attributes span {
   border-radius: 999px;
-  background: rgba(200, 157, 52, 0.12);
+  background: rgba(22, 119, 255, 0.12);
   color: var(--accent-deep);
   padding: 8px 12px;
   font-size: 0.78rem;
@@ -649,7 +649,7 @@ h1 {
 }
 
 .size-chip.active {
-  background: linear-gradient(135deg, var(--accent), #ffcf64);
+  background: linear-gradient(135deg, var(--accent), #45c0ff);
   border-color: transparent;
   color: white;
 }
