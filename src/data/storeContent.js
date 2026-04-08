@@ -157,7 +157,7 @@ export const defaultStoreContent = {
   contactItems: [
     {
       title: "Atendimento",
-      lines: ["WhatsApp: (83) 000", "E-mail: contato@reidoshark.com.br"],
+      lines: ["WhatsApp: (83) 9694-5700", "E-mail: contato@reidoshark.com.br"],
     },
     {
       title: "Entrega",
