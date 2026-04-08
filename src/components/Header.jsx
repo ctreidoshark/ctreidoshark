@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function Header({ brand, navigationLinks, whatsappLink }) {
+export default function Header({ brand, navigationLinks }) {
   const [logoVisible, setLogoVisible] = useState(Boolean(brand.logo));
 
   return (
@@ -31,12 +31,6 @@ export default function Header({ brand, navigationLinks, whatsappLink }) {
           </a>
         ))}
       </nav>
-
-      <div className="header-actions">
-        <a className="whatsapp-link" href={whatsappLink} target="_blank" rel="noreferrer">
-          WhatsApp
-        </a>
-      </div>
     </header>
   );
 }

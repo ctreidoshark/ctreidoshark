@@ -9,7 +9,6 @@ import {
   products,
   store,
 } from "./data/storeContent";
-import { buildWhatsAppLink } from "./utils/whatsapp";
 import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
 import CategoryStrip from "./components/CategoryStrip";
@@ -69,11 +68,6 @@ export default function App() {
     [catalogProducts, filters]
   );
 
-  const whatsappLink = useMemo(
-    () => buildWhatsAppLink(store.whatsappNumber),
-    []
-  );
-
   function updateFilter(key, value) {
     setFilters((current) => ({ ...current, [key]: value }));
   }
@@ -89,11 +83,7 @@ export default function App() {
   return (
     <>
       <div className="site-shell">
-        <Header
-          brand={store}
-          navigationLinks={navigationLinks}
-          whatsappLink={whatsappLink}
-        />
+        <Header brand={store} navigationLinks={navigationLinks} />
 
         <main id="inicio">
           <HeroSection store={store} spotlight={heroSpotlight} metrics={heroMetrics} />

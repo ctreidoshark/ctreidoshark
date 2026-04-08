@@ -33,7 +33,7 @@ export const defaultStoreContent = {
     description:
       "Base preta, grafismos marcantes e manga longa para treino, areia e identidade forte de equipe.",
     price: "R$ 129,90",
-    installment: "ou 3x de R$ 43,30",
+    installment: "",
     visualClass: "reference-piece",
     image: "/products/camisa-shark-gold.png",
   },
@@ -53,7 +53,7 @@ export const defaultStoreContent = {
       image: "/products/camisa-shark-gold.png",
       category: "camisa",
       gender: "feminino",
-      sizes: ["PP", "P", "M", "G", "GG"],
+      sizes: ["P", "M", "G", "GG"],
     },
     {
       id: "court-black",
