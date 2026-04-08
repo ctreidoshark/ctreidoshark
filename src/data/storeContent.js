@@ -1,186 +1,193 @@
-export const store = {
-  name: "REIDOSHARK",
-  shortName: "reidoshark",
-  initials: "RS",
-  logo: "/brand/logo-reidoshark.png",
-  tagline: "Futevolei Performance",
-  heroEyebrow: "",
-  heroTitle: "reidoshark colecao azul com pegada forte para treino e jogo.",
-  heroText:
-    "foco em camisas UV, shorts, regatas e pedidos personalizados pelo WhatsApp.",
-  footerTitle: "reidoshark pronta para vender.",
-  whatsappNumber: "558300",
-  whatsappLabel: "WhatsApp: (83) 000",
-  email: "contato@reidoshark.com.br",
-};
-
-export const navigationLinks = [
-  { href: "#colecao", label: "Colecao" },
-  { href: "#destaques", label: "Destaques" },
-  { href: "#beneficios", label: "Beneficios" },
-  { href: "#contato", label: "Contato" },
-];
-
-export const heroMetrics = [
-  { value: "UV50+", label: "Tecido leve" },
-  { value: "Secagem rapida", label: "Treino e praia" },
-  { value: "Edicao limitada", label: "Drop mensal" },
-];
-
-export const heroSpotlight = {
-  badge: "Drop 01",
-  name: "Camisa Shark Gold UV",
-  description:
-    "Base preta, grafismos marcantes e manga longa para treino, areia e identidade forte de equipe.",
-  price: "R$ 129,90",
-  installment: "ou 3x de R$ 43,30",
-  visualClass: "reference-piece",
-  image: "/products/camisa-manga-feminino.png",
-};
-
-export const categories = [
-  { label: "Linha masculina", value: "Shorts e camisas" },
-  { label: "Linha feminina", value: "Top, short e regata" },
-  { label: "Drop exclusivo", value: "Pecas com numeracao limitada" },
-];
-
-export const products = [
-  {
-    id: "shark-gold-uv",
-    tag: "Camisa",
+export const defaultStoreContent = {
+  admin: {
+    password: "admin123",
+  },
+  store: {
+    name: "REIDOSHARK",
+    shortName: "reidoshark",
+    initials: "RS",
+    logo: "/brand/logo-reidoshark.png",
+    tagline: "Futevolei Performance",
+    heroEyebrow: "",
+    heroTitle: "reidoshark colecao azul com pegada forte para treino e jogo.",
+    heroText:
+      "foco em camisas UV, shorts, regatas e pedidos personalizados pelo WhatsApp.",
+    footerTitle: "reidoshark pronta para vender.",
+    whatsappNumber: "558300",
+    whatsappLabel: "WhatsApp: (83) 000",
+    email: "contato@reidoshark.com.br",
+  },
+  navigationLinks: [
+    { href: "#colecao", label: "Colecao" },
+    { href: "#destaques", label: "Destaques" },
+    { href: "#beneficios", label: "Beneficios" },
+    { href: "#contato", label: "Contato" },
+  ],
+  heroMetrics: [
+    { value: "UV50+", label: "Tecido leve" },
+    { value: "Secagem rapida", label: "Treino e praia" },
+    { value: "Edicao limitada", label: "Drop mensal" },
+  ],
+  heroSpotlight: {
+    badge: "Drop 01",
     name: "Camisa Shark Gold UV",
-    description: "Peca inspirada no layout enviado, com preto grafite, dourado e manga longa.",
-    price: 129.9,
+    description:
+      "Base preta, grafismos marcantes e manga longa para treino, areia e identidade forte de equipe.",
+    price: "R$ 129,90",
+    installment: "ou 3x de R$ 43,30",
     visualClass: "reference-piece",
     image: "/products/camisa-manga-feminino.png",
-    category: "camisa",
-    gender: "feminino",
-    sizes: ["PP", "P", "M", "G", "GG"],
   },
-  {
-    id: "court-black",
-    tag: "Short",
-    name: "Short Court Black",
-    description: "Base preta com detalhes dourados para combinar com a camisa principal.",
-    price: 99.9,
-    visualClass: "gold-core",
-    image: "/products/short-masculino.png",
-    category: "short",
-    gender: "masculino",
-    sizes: ["P", "M", "G", "GG"],
-  },
-  {
-    id: "ventania",
-    tag: "Regata",
-    name: "Regata Training Gold",
-    description: "Leve, respiravel e pensada para manter a mesma linguagem visual da colecao.",
-    price: 89.9,
-    visualClass: "graphite-wave",
-    image: "/products/camisa-regata-masculino.png",
-    category: "regata",
-    gender: "masculino",
-    sizes: ["P", "M", "G", "GG"],
-  },
-  {
-    id: "brisa-match",
-    tag: "Feminino",
-    name: "Top Brisa Match",
-    description: "Sustentacao media com contraste dourado para jogos, treino e uniforme.",
-    price: 84.9,
-    visualClass: "gold-pulse",
-    image: "/products/regata-feminina.png",
-    category: "top",
-    gender: "feminino",
-    sizes: ["PP", "P", "M", "G"],
-  },
-  {
-    id: "camisa-sand-rush",
-    tag: "Camisa",
-    name: "Camisa Sand Rush",
-    description: "Modelo dry fit com visual de treino intenso e acabamento premium para areia.",
-    price: 119.9,
-    visualClass: "sunset-drive",
-    image: "/products/camisa-manga-masculina.png",
-    category: "camisa",
-    gender: "masculino",
-    sizes: ["P", "M", "G", "GG", "XG"],
-  },
-  {
-    id: "regata-storm-net",
-    tag: "Regata",
-    name: "Regata Storm Net",
-    description: "Regata respiravel para treino no calor, com recortes contrastantes e toque macio.",
-    price: 79.9,
-    visualClass: "graphite-wave",
-    image: "/products/camisa-regata-masculino.png",
-    category: "regata",
-    gender: "unissex",
-    sizes: ["P", "M", "G", "GG"],
-  },
-  {
-    id: "top-areia-elite",
-    tag: "Top",
-    name: "Top Areia Elite",
-    description: "Top de media sustentacao com forro confortavel e leitura visual de competicao.",
-    price: 89.9,
-    visualClass: "gold-pulse",
-    image: "/products/regata-feminina.png",
-    category: "top",
-    gender: "feminino",
-    sizes: ["PP", "P", "M", "G"],
-  },
-  {
-    id: "manga-uv-raid",
-    tag: "Manga longa",
-    name: "Camisa UV Raid",
-    description: "Protecao solar, secagem rapida e estampa marcante para uniformes de treino.",
-    price: 139.9,
-    visualClass: "gold-core",
-    image: "/products/camisa-manga-masculina.png",
-    category: "camisa",
-    gender: "unissex",
-    sizes: ["P", "M", "G", "GG", "XG"],
-  },
-  {
-    id: "short-fem-brisa",
-    tag: "Feminino",
-    name: "Short Brisa Court",
-    description: "Short feminino de cintura alta com tecido firme e liberdade para salto e defesa.",
-    price: 86.9,
-    visualClass: "gold-pulse",
-    image: "/products/short-feminino.png",
-    category: "short",
-    gender: "feminino",
-    sizes: ["PP", "P", "M", "G"],
-  },
-];
+  categories: [
+    { label: "Linha masculina", value: "Shorts e camisas" },
+    { label: "Linha feminina", value: "Top, short e regata" },
+    { label: "Drop exclusivo", value: "Pecas com numeracao limitada" },
+  ],
+  products: [
+    {
+      id: "shark-gold-uv",
+      tag: "Camisa",
+      name: "Camisa Shark Gold UV",
+      description: "Peca inspirada no layout enviado, com preto grafite, dourado e manga longa.",
+      price: 129.9,
+      visualClass: "reference-piece",
+      image: "/products/camisa-manga-feminino.png",
+      category: "camisa",
+      gender: "feminino",
+      sizes: ["PP", "P", "M", "G", "GG"],
+    },
+    {
+      id: "court-black",
+      tag: "Short",
+      name: "Short Court Black",
+      description: "Base preta com detalhes dourados para combinar com a camisa principal.",
+      price: 99.9,
+      visualClass: "gold-core",
+      image: "/products/short-masculino.png",
+      category: "short",
+      gender: "masculino",
+      sizes: ["P", "M", "G", "GG"],
+    },
+    {
+      id: "ventania",
+      tag: "Regata",
+      name: "Regata Training Gold",
+      description: "Leve, respiravel e pensada para manter a mesma linguagem visual da colecao.",
+      price: 89.9,
+      visualClass: "graphite-wave",
+      image: "/products/camisa-regata-masculino.png",
+      category: "regata",
+      gender: "masculino",
+      sizes: ["P", "M", "G", "GG"],
+    },
+    {
+      id: "brisa-match",
+      tag: "Feminino",
+      name: "Top Brisa Match",
+      description: "Sustentacao media com contraste dourado para jogos, treino e uniforme.",
+      price: 84.9,
+      visualClass: "gold-pulse",
+      image: "/products/regata-feminina.png",
+      category: "top",
+      gender: "feminino",
+      sizes: ["PP", "P", "M", "G"],
+    },
+    {
+      id: "camisa-sand-rush",
+      tag: "Camisa",
+      name: "Camisa Sand Rush",
+      description: "Modelo dry fit com visual de treino intenso e acabamento premium para areia.",
+      price: 119.9,
+      visualClass: "sunset-drive",
+      image: "/products/camisa-manga-masculina.png",
+      category: "camisa",
+      gender: "masculino",
+      sizes: ["P", "M", "G", "GG", "XG"],
+    },
+    {
+      id: "regata-storm-net",
+      tag: "Regata",
+      name: "Regata Storm Net",
+      description: "Regata respiravel para treino no calor, com recortes contrastantes e toque macio.",
+      price: 79.9,
+      visualClass: "graphite-wave",
+      image: "/products/camisa-regata-masculino.png",
+      category: "regata",
+      gender: "unissex",
+      sizes: ["P", "M", "G", "GG"],
+    },
+    {
+      id: "top-areia-elite",
+      tag: "Top",
+      name: "Top Areia Elite",
+      description: "Top de media sustentacao com forro confortavel e leitura visual de competicao.",
+      price: 89.9,
+      visualClass: "gold-pulse",
+      image: "/products/regata-feminina.png",
+      category: "top",
+      gender: "feminino",
+      sizes: ["PP", "P", "M", "G"],
+    },
+    {
+      id: "manga-uv-raid",
+      tag: "Manga longa",
+      name: "Camisa UV Raid",
+      description: "Protecao solar, secagem rapida e estampa marcante para uniformes de treino.",
+      price: 139.9,
+      visualClass: "gold-core",
+      image: "/products/camisa-manga-masculina.png",
+      category: "camisa",
+      gender: "unissex",
+      sizes: ["P", "M", "G", "GG", "XG"],
+    },
+    {
+      id: "short-fem-brisa",
+      tag: "Feminino",
+      name: "Short Brisa Court",
+      description: "Short feminino de cintura alta com tecido firme e liberdade para salto e defesa.",
+      price: 86.9,
+      visualClass: "gold-pulse",
+      image: "/products/short-feminino.png",
+      category: "short",
+      gender: "feminino",
+      sizes: ["PP", "P", "M", "G"],
+    },
+  ],
+  benefits: [
+    {
+      title: "Visual de marca",
+      text: "A vitrine conversa com a referencia da peca, trazendo preto, dourado e leitura premium.",
+    },
+    {
+      title: "Compra simples",
+      text: "Produtos destacados, preco visivel e carrinho rapido para nao perder conversao.",
+    },
+    {
+      title: "Canal direto",
+      text: "WhatsApp em destaque para fechar pedido, tirar duvida de tamanho e vender personalizado.",
+    },
+  ],
+  contactItems: [
+    {
+      title: "Atendimento",
+      lines: ["WhatsApp: (83) 000", "E-mail: contato@reidoshark.com.br"],
+    },
+    {
+      title: "Entrega",
+      lines: ["Envio para todo o Brasil e retirada local mediante combinacao."],
+    },
+    {
+      title: "Pagamento",
+      lines: ["Pix, cartao e pedidos em lote para equipes e escolinhas."],
+    },
+  ],
+};
 
-export const benefits = [
-  {
-    title: "Visual de marca",
-    text: "A vitrine conversa com a referencia da peca, trazendo preto, dourado e leitura premium.",
-  },
-  {
-    title: "Compra simples",
-    text: "Produtos destacados, preco visivel e carrinho rapido para nao perder conversao.",
-  },
-  {
-    title: "Canal direto",
-    text: "WhatsApp em destaque para fechar pedido, tirar duvida de tamanho e vender personalizado.",
-  },
-];
-
-export const contactItems = [
-  {
-    title: "Atendimento",
-    lines: [store.whatsappLabel, `E-mail: ${store.email}`],
-  },
-  {
-    title: "Entrega",
-    lines: ["Envio para todo o Brasil e retirada local mediante combinacao."],
-  },
-  {
-    title: "Pagamento",
-    lines: ["Pix, cartao e pedidos em lote para equipes e escolinhas."],
-  },
-];
+export const store = defaultStoreContent.store;
+export const navigationLinks = defaultStoreContent.navigationLinks;
+export const heroMetrics = defaultStoreContent.heroMetrics;
+export const heroSpotlight = defaultStoreContent.heroSpotlight;
+export const categories = defaultStoreContent.categories;
+export const products = defaultStoreContent.products;
+export const benefits = defaultStoreContent.benefits;
+export const contactItems = defaultStoreContent.contactItems;
