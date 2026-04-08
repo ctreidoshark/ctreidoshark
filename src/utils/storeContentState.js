@@ -3,9 +3,72 @@ import { defaultStoreContent } from "../data/storeContent";
 const STORAGE_KEY = "reidoshark-store-content";
 const ADMIN_SESSION_KEY = "reidoshark-admin-auth";
 const STORE_CONTENT_EVENT = "store-content-updated";
+const LEGACY_HERO_IMAGE = "/products/camisa-manga-feminino.png";
+const HERO_IMAGE = "/products/camisa-shark-gold.png";
+const PRODUCT_IMAGE_MIGRATIONS = {
+  "shark-gold-uv": {
+    oldImage: "/products/camisa-manga-feminino.png",
+    newImage: "/products/camisa-shark-gold.png",
+  },
+  "brisa-match": {
+    oldImage: "/products/regata-feminina.png",
+    newImage: "/products/feminino-padraoazulerosa.jpeg",
+  },
+  "top-areia-elite": {
+    oldImage: "/products/regata-feminina.png",
+    newImage: "/products/feminino-padraorosa.png",
+  },
+  "court-black": {
+    oldImage: "/products/short-masculino.png",
+    newImage: "/products/masculino-padraopreto.jpeg",
+  },
+  ventania: {
+    oldImage: "/products/camisa-regata-masculino.png",
+    newImage: "/products/masculino-padraodourado.jpeg",
+  },
+  "camisa-sand-rush": {
+    oldImage: "/products/camisa-manga-masculina.png",
+    newImage: "/products/masculino-padraodourado.jpeg",
+  },
+  "regata-storm-net": {
+    oldImage: "/products/camisa-regata-masculino.png",
+    newImage: "/products/masculino-padraopreto.jpeg",
+  },
+  "manga-uv-raid": {
+    oldImage: "/products/camisa-manga-masculina.png",
+    newImage: "/products/masculino-padraodourado.jpeg",
+  },
+};
 
 function clone(value) {
   return JSON.parse(JSON.stringify(value));
+}
+
+function applyDefaultImageMigrations(content) {
+  const nextContent = clone(content ?? {});
+
+  if (nextContent.heroSpotlight?.image === LEGACY_HERO_IMAGE) {
+    nextContent.heroSpotlight.image = HERO_IMAGE;
+  }
+
+  if (!Array.isArray(nextContent.products)) {
+    return nextContent;
+  }
+
+  nextContent.products = nextContent.products.map((product) => {
+    const migration = PRODUCT_IMAGE_MIGRATIONS[product?.id];
+
+    if (!migration || product?.image !== migration.oldImage) {
+      return product;
+    }
+
+    return {
+      ...product,
+      image: migration.newImage,
+    };
+  });
+
+  return nextContent;
 }
 
 function ensureString(value, fallback = "") {
@@ -83,71 +146,72 @@ export function createEmptyProduct() {
 }
 
 export function normalizeStoreContent(content) {
+  const migratedContent = applyDefaultImageMigrations(content);
   const defaults = getDefaultStoreContent();
 
   return {
     admin: {
-      password: ensureString(content?.admin?.password, defaults.admin.password),
+      password: ensureString(migratedContent?.admin?.password, defaults.admin.password),
     },
     store: {
-      name: ensureString(content?.store?.name, defaults.store.name),
-      shortName: ensureString(content?.store?.shortName, defaults.store.shortName),
-      initials: ensureString(content?.store?.initials, defaults.store.initials),
-      logo: ensureString(content?.store?.logo, defaults.store.logo),
-      tagline: ensureString(content?.store?.tagline, defaults.store.tagline),
-      heroEyebrow: ensureString(content?.store?.heroEyebrow, defaults.store.heroEyebrow),
-      heroTitle: ensureString(content?.store?.heroTitle, defaults.store.heroTitle),
-      heroText: ensureString(content?.store?.heroText, defaults.store.heroText),
-      footerTitle: ensureString(content?.store?.footerTitle, defaults.store.footerTitle),
-      whatsappNumber: ensureString(content?.store?.whatsappNumber, defaults.store.whatsappNumber),
-      whatsappLabel: ensureString(content?.store?.whatsappLabel, defaults.store.whatsappLabel),
-      email: ensureString(content?.store?.email, defaults.store.email),
+      name: ensureString(migratedContent?.store?.name, defaults.store.name),
+      shortName: ensureString(migratedContent?.store?.shortName, defaults.store.shortName),
+      initials: ensureString(migratedContent?.store?.initials, defaults.store.initials),
+      logo: ensureString(migratedContent?.store?.logo, defaults.store.logo),
+      tagline: ensureString(migratedContent?.store?.tagline, defaults.store.tagline),
+      heroEyebrow: ensureString(migratedContent?.store?.heroEyebrow, defaults.store.heroEyebrow),
+      heroTitle: ensureString(migratedContent?.store?.heroTitle, defaults.store.heroTitle),
+      heroText: ensureString(migratedContent?.store?.heroText, defaults.store.heroText),
+      footerTitle: ensureString(migratedContent?.store?.footerTitle, defaults.store.footerTitle),
+      whatsappNumber: ensureString(migratedContent?.store?.whatsappNumber, defaults.store.whatsappNumber),
+      whatsappLabel: ensureString(migratedContent?.store?.whatsappLabel, defaults.store.whatsappLabel),
+      email: ensureString(migratedContent?.store?.email, defaults.store.email),
     },
-    navigationLinks: Array.isArray(content?.navigationLinks) && content.navigationLinks.length
-      ? content.navigationLinks.map((item, index) =>
+    navigationLinks: Array.isArray(migratedContent?.navigationLinks) && migratedContent.navigationLinks.length
+      ? migratedContent.navigationLinks.map((item, index) =>
           normalizePair(item, defaults.navigationLinks[index] ?? defaults.navigationLinks[0])
         )
       : defaults.navigationLinks,
-    heroMetrics: Array.isArray(content?.heroMetrics) && content.heroMetrics.length
-      ? content.heroMetrics.map((item, index) =>
+    heroMetrics: Array.isArray(migratedContent?.heroMetrics) && migratedContent.heroMetrics.length
+      ? migratedContent.heroMetrics.map((item, index) =>
           normalizePair(item, defaults.heroMetrics[index] ?? defaults.heroMetrics[0])
         )
       : defaults.heroMetrics,
     heroSpotlight: {
-      badge: ensureString(content?.heroSpotlight?.badge, defaults.heroSpotlight.badge),
-      name: ensureString(content?.heroSpotlight?.name, defaults.heroSpotlight.name),
+      badge: ensureString(migratedContent?.heroSpotlight?.badge, defaults.heroSpotlight.badge),
+      name: ensureString(migratedContent?.heroSpotlight?.name, defaults.heroSpotlight.name),
       description: ensureString(
-        content?.heroSpotlight?.description,
+        migratedContent?.heroSpotlight?.description,
         defaults.heroSpotlight.description
       ),
-      price: ensureString(content?.heroSpotlight?.price, defaults.heroSpotlight.price),
+      price: ensureString(migratedContent?.heroSpotlight?.price, defaults.heroSpotlight.price),
       installment: ensureString(
-        content?.heroSpotlight?.installment,
+        migratedContent?.heroSpotlight?.installment,
         defaults.heroSpotlight.installment
       ),
       visualClass: ensureString(
-        content?.heroSpotlight?.visualClass,
+        migratedContent?.heroSpotlight?.visualClass,
         defaults.heroSpotlight.visualClass
       ),
-      image: ensureString(content?.heroSpotlight?.image, defaults.heroSpotlight.image),
+      image: ensureString(migratedContent?.heroSpotlight?.image, defaults.heroSpotlight.image),
     },
-    categories: Array.isArray(content?.categories) && content.categories.length
-      ? content.categories.map((item, index) =>
+    categories: Array.isArray(migratedContent?.categories) && migratedContent.categories.length
+      ? migratedContent.categories.map((item, index) =>
           normalizePair(item, defaults.categories[index] ?? defaults.categories[0])
         )
       : defaults.categories,
-    products: Array.isArray(content?.products) && content.products.length
-      ? content.products.map((product, index) =>
+    products: Array.isArray(migratedContent?.products) && migratedContent.products.length
+      ? migratedContent.products.map((product, index) =>
           normalizeProduct(product, defaults.products[index] ?? defaults.products[0])
         )
       : defaults.products,
-    benefits: Array.isArray(content?.benefits) && content.benefits.length
-      ? content.benefits.map((item, index) =>
+    benefits: Array.isArray(migratedContent?.benefits) && migratedContent.benefits.length
+      ? migratedContent.benefits.map((item, index) =>
           normalizeTextBlock(item, defaults.benefits[index] ?? defaults.benefits[0])
         )
       : defaults.benefits,
-    contactItems: Array.isArray(content?.contactItems) && content.contactItems.length
-      ? content.contactItems.map((item, index) =>
+    contactItems: Array.isArray(migratedContent?.contactItems) && migratedContent.contactItems.length
+      ? migratedContent.contactItems.map((item, index) =>
           normalizeContactItem(item, defaults.contactItems[index] ?? defaults.contactItems[0])
         )
       : defaults.contactItems,
