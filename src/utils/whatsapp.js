@@ -1,7 +1,23 @@
 import { formatCurrency } from "./currency";
 
+function normalizeWhatsAppNumber(number) {
+  const digits = String(number ?? "").replace(/\D/g, "");
+
+  if (!digits) {
+    return "";
+  }
+
+  if (digits.startsWith("55")) {
+    return digits;
+  }
+
+  return `55${digits}`;
+}
+
 export function buildWhatsAppLink(number) {
-  return `https://wa.me/${number}`;
+  const normalizedNumber = normalizeWhatsAppNumber(number);
+
+  return normalizedNumber ? `https://wa.me/${normalizedNumber}` : "#";
 }
 
 export function buildWhatsAppProductLink(number, product, selectedSize) {

@@ -112,7 +112,7 @@ export const defaultStoreContent = {
       visualClass: "graphite-wave",
       image: "/products/masculino-padraopreto.jpeg",
       category: "regata",
-      gender: "unissex",
+      gender: "Masculino",
       sizes: ["P", "M", "G", "GG"],
     },
     {
@@ -124,7 +124,7 @@ export const defaultStoreContent = {
       visualClass: "gold-core",
       image: "/products/masculino-padraodourado.jpeg",
       category: "camisa",
-      gender: "unissex",
+      gender: "Masculino",
       sizes: ["P", "M", "G", "GG"],
     },
     {
