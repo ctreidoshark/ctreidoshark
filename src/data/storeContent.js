@@ -101,7 +101,7 @@ export const defaultStoreContent = {
       image: "/products/masculino-padraodourado.jpeg",
       category: "camisa",
       gender: "masculino",
-      sizes: ["P", "M", "G", "GG", "XG"],
+      sizes: ["P", "M", "G", "GG"],
     },
     {
       id: "regata-storm-net",
@@ -116,18 +116,6 @@ export const defaultStoreContent = {
       sizes: ["P", "M", "G", "GG"],
     },
     {
-      id: "top-areia-elite",
-      tag: "Top",
-      name: "Top Areia Elite",
-      description: "Top de media sustentacao com forro confortavel e leitura visual de competicao.",
-      price: 89.9,
-      visualClass: "gold-pulse",
-      image: "/products/feminino-padraorosa.png",
-      category: "top",
-      gender: "feminino",
-      sizes: ["PP", "P", "M", "G"],
-    },
-    {
       id: "manga-uv-raid",
       tag: "Manga longa",
       name: "Camisa UV Raid",
@@ -137,7 +125,7 @@ export const defaultStoreContent = {
       image: "/products/masculino-padraodourado.jpeg",
       category: "camisa",
       gender: "unissex",
-      sizes: ["P", "M", "G", "GG", "XG"],
+      sizes: ["P", "M", "G", "GG"],
     },
     {
       id: "short-fem-brisa",
