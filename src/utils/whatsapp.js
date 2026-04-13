@@ -21,7 +21,9 @@ export function buildWhatsAppLink(number) {
 }
 
 export function buildWhatsAppProductLink(number, product, selectedSize) {
-  const sizeLabel = selectedSize ? ` no tamanho ${selectedSize}` : "";
+  const normalizedSize = String(selectedSize ?? "").trim();
+  const hasSize = normalizedSize && normalizedSize.toLowerCase() !== "unico";
+  const sizeLabel = hasSize ? ` no tamanho ${normalizedSize}` : "";
   const message = encodeURIComponent(
     `Oi! Tenho interesse em ${product.name}${sizeLabel}. Pode me passar mais detalhes?`
   );

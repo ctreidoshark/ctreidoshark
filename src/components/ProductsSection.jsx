@@ -105,73 +105,87 @@ export default function ProductsSection({
 
       {products.length ? (
         <div className="products-grid">
-          {products.map((product) => (
-            <article className="product-card" key={product.id}>
-              <div className={`product-visual ${product.visualClass} ${imageVisibility[product.id] ? "has-image" : ""}`}>
-                {product.image && imageVisibility[product.id] ? (
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="product-piece-image"
-                    onError={() =>
-                      setImageVisibility((current) => ({
-                        ...current,
-                        [product.id]: false,
-                      }))
-                    }
-                  />
-                ) : null}
-                {product.image && imageVisibility[product.id] ? (
-                  <span className="product-visual-label">Foto de exemplo da colecao</span>
-                ) : product.visualClass === "reference-piece" ? (
-                  <span className="product-visual-label">Peca enviada como referencia</span>
-                ) : null}
-              </div>
-              <div className="product-info">
-                {product.tag?.trim() ? <span className="product-tag">{product.tag}</span> : null}
-                <h3>{product.name}</h3>
-                <p>{product.description}</p>
+          {products.map((product) => {
+            const hasSelectableSizes =
+              product.sizes.length > 1 ||
+              (product.sizes.length === 1 && product.sizes[0]?.toLowerCase() !== "unico");
 
-                <div className="product-attributes">
-                  <span>{product.gender}</span>
-                  <span>{product.category}</span>
+            return (
+              <article className="product-card" key={product.id}>
+                <div
+                  className={`product-visual ${product.visualClass} ${
+                    imageVisibility[product.id] ? "has-image" : ""
+                  }`}
+                >
+                  {product.image && imageVisibility[product.id] ? (
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="product-piece-image"
+                      onError={() =>
+                        setImageVisibility((current) => ({
+                          ...current,
+                          [product.id]: false,
+                        }))
+                      }
+                    />
+                  ) : null}
+                  {product.image && imageVisibility[product.id] ? (
+                    <span className="product-visual-label">Foto de exemplo da colecao</span>
+                  ) : product.visualClass === "reference-piece" ? (
+                    <span className="product-visual-label">Peca enviada como referencia</span>
+                  ) : null}
                 </div>
+                <div className="product-info">
+                  {product.tag?.trim() ? <span className="product-tag">{product.tag}</span> : null}
+                  <h3>{product.name}</h3>
+                  <p>{product.description}</p>
 
-                <div className="size-field">
-                  <span>Tamanho</span>
-                </div>
+                  <div className="product-attributes">
+                    <span>{product.gender}</span>
+                    <span>{product.category}</span>
+                  </div>
 
-                <div className="size-chips" aria-label={`Tamanhos disponiveis para ${product.name}`}>
-                  {product.sizes.map((size) => (
-                    <button
-                      type="button"
-                      key={size}
-                      className={selectedSizes[product.id] === size ? "size-chip active" : "size-chip"}
-                      onClick={() => handleSizeChange(product.id, size)}
+                  {hasSelectableSizes ? (
+                    <>
+                      <div className="size-field">
+                        <span>Tamanho</span>
+                      </div>
+
+                      <div className="size-chips" aria-label={`Tamanhos disponiveis para ${product.name}`}>
+                        {product.sizes.map((size) => (
+                          <button
+                            type="button"
+                            key={size}
+                            className={selectedSizes[product.id] === size ? "size-chip active" : "size-chip"}
+                            onClick={() => handleSizeChange(product.id, size)}
+                          >
+                            {size}
+                          </button>
+                        ))}
+                      </div>
+                    </>
+                  ) : null}
+
+                  <div className="product-meta">
+                    <strong>{formatCurrency(product.price)}</strong>
+                    <a
+                      href={buildWhatsAppProductLink(
+                        whatsappNumber,
+                        product,
+                        hasSelectableSizes ? selectedSizes[product.id] ?? product.sizes[0] : ""
+                      )}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="product-action"
                     >
-                      {size}
-                    </button>
-                  ))}
+                      Pedir no WhatsApp
+                    </a>
+                  </div>
                 </div>
-
-                <div className="product-meta">
-                  <strong>{formatCurrency(product.price)}</strong>
-                  <a
-                    href={buildWhatsAppProductLink(
-                      whatsappNumber,
-                      product,
-                      selectedSizes[product.id] ?? product.sizes[0]
-                    )}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="product-action"
-                  >
-                    Pedir no WhatsApp
-                  </a>
-                </div>
-              </div>
-            </article>
-          ))}
+              </article>
+            );
+          })}
         </div>
       ) : (
         <div className="empty-products">

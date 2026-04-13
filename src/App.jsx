@@ -69,6 +69,14 @@ export default function App() {
     [catalogProducts, filters]
   );
 
+  const visibleNavigationLinks = useMemo(
+    () =>
+      navigationLinks.filter(
+        (link) => link.href !== "#destaques" && link.href !== "#beneficios"
+      ),
+    [navigationLinks]
+  );
+
   function updateFilter(key, value) {
     setFilters((current) => ({ ...current, [key]: value }));
   }
@@ -84,7 +92,7 @@ export default function App() {
   return (
     <>
       <div className="site-shell">
-        <Header brand={store} navigationLinks={navigationLinks} />
+        <Header brand={store} navigationLinks={visibleNavigationLinks} />
 
         <main id="inicio">
           <HeroSection store={store} spotlight={heroSpotlight} metrics={heroMetrics} />

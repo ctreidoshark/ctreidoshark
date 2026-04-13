@@ -18,8 +18,6 @@ export const defaultStoreContent = {
   },
   navigationLinks: [
     { href: "#colecao", label: "Colecao" },
-    { href: "#destaques", label: "Destaques" },
-    { href: "#beneficios", label: "Beneficios" },
     { href: "#contato", label: "Contato" },
   ],
   heroMetrics: [
