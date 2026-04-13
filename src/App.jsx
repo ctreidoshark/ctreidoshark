@@ -3,7 +3,6 @@ import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
 import CategoryStrip from "./components/CategoryStrip";
 import ProductsSection from "./components/ProductsSection";
-import BenefitsSection from "./components/BenefitsSection";
 import Footer from "./components/Footer";
 import { loadStoreContent, subscribeToStoreContent } from "./utils/storeContentState";
 
@@ -23,7 +22,7 @@ export default function App() {
     return subscribeToStoreContent(syncContent);
   }, []);
 
-  const { benefits, categories, contactItems, heroMetrics, heroSpotlight, navigationLinks, products, store } =
+  const { categories, contactItems, heroMetrics, heroSpotlight, navigationLinks, products, store } =
     content;
 
   const catalogProducts = useMemo(
@@ -99,7 +98,6 @@ export default function App() {
             onFilterChange={updateFilter}
             onClearFilters={clearFilters}
           />
-          <BenefitsSection benefits={benefits} />
         </main>
 
         <Footer store={store} contactItems={contactItems} />

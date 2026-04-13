@@ -734,13 +734,6 @@ h1 {
   background: linear-gradient(180deg, var(--accent), #73d7ff);
 }
 
-.benefit-index {
-  display: inline-block;
-  font-size: 1.2rem;
-  color: var(--accent-deep);
-  margin-bottom: 10px;
-}
-
 .footer {
   padding: 30px;
   margin-top: 40px;
