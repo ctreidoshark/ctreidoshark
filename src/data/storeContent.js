@@ -113,6 +113,18 @@ export const defaultStoreContent = {
       gender: "feminino",
       sizes: ["PP", "P", "M", "G"],
     },
+    {
+      id: "bola-mikasa",
+      tag: "Bola",
+      name: "BOLA MIKASA",
+      description: "Bola para treino e jogo com acabamento resistente, ideal para partidas e rotina na areia.",
+      price: 350,
+      visualClass: "ocean-burst",
+      image: "/products/bolamikasa.png",
+      category: "acessorio",
+      gender: "unissex",
+      sizes: ["Unico"],
+    },
   ],
   benefits: [
     {
