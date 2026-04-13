@@ -128,7 +128,7 @@ export default function ProductsSection({
                 ) : null}
               </div>
               <div className="product-info">
-                <span className="product-tag">{product.tag}</span>
+                {product.tag?.trim() ? <span className="product-tag">{product.tag}</span> : null}
                 <h3>{product.name}</h3>
                 <p>{product.description}</p>
 
