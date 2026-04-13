@@ -9,20 +9,6 @@ export default function FeatureBanner() {
           WhatsApp.
         </p>
       </div>
-      <div className="feature-stats" aria-label="Pontos fortes do layout">
-        <article>
-          <strong>01</strong>
-          <span>Hero forte com produto em destaque</span>
-        </article>
-        <article>
-          <strong>02</strong>
-          <span>Filtros simples para acelerar a decisao</span>
-        </article>
-        <article>
-          <strong>03</strong>
-          <span>Contato rapido para fechar pedido</span>
-        </article>
-      </div>
     </section>
   );
 }

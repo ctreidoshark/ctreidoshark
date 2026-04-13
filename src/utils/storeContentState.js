@@ -126,6 +126,26 @@ function normalizeProduct(product, fallbackProduct) {
   };
 }
 
+function normalizeProducts(products, defaultProducts) {
+  if (!Array.isArray(products) || !products.length) {
+    return defaultProducts;
+  }
+
+  const normalizedProducts = products.map((product, index) => {
+    const fallbackProduct =
+      defaultProducts.find((defaultProduct) => defaultProduct.id === product?.id) ??
+      defaultProducts[index] ??
+      defaultProducts[0];
+
+    return normalizeProduct(product, fallbackProduct);
+  });
+
+  const normalizedIds = new Set(normalizedProducts.map((product) => product.id));
+  const missingDefaultProducts = defaultProducts.filter((product) => !normalizedIds.has(product.id));
+
+  return [...normalizedProducts, ...missingDefaultProducts];
+}
+
 export function getDefaultStoreContent() {
   return clone(defaultStoreContent);
 }
@@ -200,11 +220,7 @@ export function normalizeStoreContent(content) {
           normalizePair(item, defaults.categories[index] ?? defaults.categories[0])
         )
       : defaults.categories,
-    products: Array.isArray(migratedContent?.products) && migratedContent.products.length
-      ? migratedContent.products.map((product, index) =>
-          normalizeProduct(product, defaults.products[index] ?? defaults.products[0])
-        )
-      : defaults.products,
+    products: normalizeProducts(migratedContent?.products, defaults.products),
     benefits: Array.isArray(migratedContent?.benefits) && migratedContent.benefits.length
       ? migratedContent.benefits.map((item, index) =>
           normalizeTextBlock(item, defaults.benefits[index] ?? defaults.benefits[0])

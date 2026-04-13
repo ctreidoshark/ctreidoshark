@@ -1,15 +1,8 @@
 export default function BenefitsSection({ benefits }) {
   return (
     <section className="benefits-section" id="beneficios">
-      <div className="section-heading benefits-heading">
-        <div>
-          <p className="eyebrow">Por que funciona</p>
-          <h2>Estrutura pensada para vender roupa esportiva</h2>
-        </div>
-        <p className="benefits-intro">
-          Cada bloco foi desenhado para organizar a vitrine, valorizar as fotos e reduzir o atrito
-          de compra.
-        </p>
+      <div className="benefits-heading">
+        <h2>Estrutura pensada para vender roupa esportiva</h2>
       </div>
 
       <div className="benefits-grid">

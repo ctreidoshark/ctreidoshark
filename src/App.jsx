@@ -1,32 +1,34 @@
-import { useMemo, useState } from "react";
-import {
-  benefits,
-  categories,
-  contactItems,
-  heroMetrics,
-  heroSpotlight,
-  navigationLinks,
-  products,
-  store,
-} from "./data/storeContent";
+import { useEffect, useMemo, useState } from "react";
 import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
 import CategoryStrip from "./components/CategoryStrip";
 import ProductsSection from "./components/ProductsSection";
-import FeatureBanner from "./components/FeatureBanner";
 import BenefitsSection from "./components/BenefitsSection";
 import Footer from "./components/Footer";
+import { loadStoreContent, subscribeToStoreContent } from "./utils/storeContentState";
 
 export default function App() {
+  const [content, setContent] = useState(() => loadStoreContent());
   const [filters, setFilters] = useState({
     category: "todos",
     gender: "todos",
     size: "todos",
   });
 
+  useEffect(() => {
+    const syncContent = () => {
+      setContent(loadStoreContent());
+    };
+
+    return subscribeToStoreContent(syncContent);
+  }, []);
+
+  const { benefits, categories, contactItems, heroMetrics, heroSpotlight, navigationLinks, products, store } =
+    content;
+
   const catalogProducts = useMemo(
     () => products.filter((product) => Boolean(product.image)),
-    []
+    [products]
   );
 
   const filterOptions = useMemo(
@@ -97,7 +99,6 @@ export default function App() {
             onFilterChange={updateFilter}
             onClearFilters={clearFilters}
           />
-          <FeatureBanner />
           <BenefitsSection benefits={benefits} />
         </main>
 

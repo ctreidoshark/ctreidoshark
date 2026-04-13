@@ -662,9 +662,6 @@ h1 {
 }
 
 .feature-banner {
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 28px;
   margin: 34px 0;
   padding: 34px;
   position: relative;
@@ -674,8 +671,13 @@ h1 {
     linear-gradient(145deg, rgba(255, 255, 255, 0.82), rgba(232, 243, 255, 0.92));
 }
 
+.benefits-section {
+  margin-top: 42px;
+}
+
 .benefits-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  max-width: 920px;
 }
 
 .benefits-grid article,
@@ -692,7 +694,6 @@ h1 {
 }
 
 .feature-copy,
-.feature-stats,
 .benefits-intro {
   position: relative;
   z-index: 1;
@@ -715,46 +716,9 @@ h1 {
   margin-bottom: 0;
 }
 
-.feature-stats {
-  display: grid;
-  gap: 14px;
-  align-content: center;
-}
-
-.feature-stats article {
-  display: grid;
-  gap: 8px;
-  padding: 18px 20px;
-  border-radius: 20px;
-  border: 1px solid rgba(22, 119, 255, 0.12);
-  background: rgba(10, 61, 142, 0.92);
-  color: white;
-  box-shadow: 0 18px 30px rgba(11, 54, 122, 0.14);
-}
-
-.feature-stats strong,
-.benefit-index {
-  font-family: "Bebas Neue", sans-serif;
-  letter-spacing: 0.04em;
-}
-
-.feature-stats strong {
-  font-size: 1.6rem;
-  color: #7fe0ff;
-}
-
-.feature-stats span {
-  line-height: 1.5;
-}
-
 .benefits-heading {
-  align-items: end;
   margin-bottom: 24px;
-}
-
-.benefits-intro {
-  max-width: 420px;
-  margin-bottom: 0;
+  max-width: 760px;
 }
 
 .benefits-grid article {
@@ -849,10 +813,6 @@ h1 {
 
   .benefits-heading {
     margin-bottom: 18px;
-  }
-
-  .benefits-intro {
-    max-width: none;
   }
 }
 

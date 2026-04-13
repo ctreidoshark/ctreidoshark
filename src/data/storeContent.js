@@ -25,10 +25,8 @@ export const defaultStoreContent = {
   heroMetrics: [
     { value: "UV50+", label: "Tecido leve" },
     { value: "Secagem rapida", label: "Treino e praia" },
-    { value: "Edicao limitada", label: "Drop mensal" },
   ],
   heroSpotlight: {
-    badge: "Drop 01",
     name: "CAMISA MANGA LONGA PRETO COM DOURADO",
     description:
       "Base preta, grafismos marcantes e manga longa para treino, areia e identidade forte de equipe.",
@@ -58,7 +56,7 @@ export const defaultStoreContent = {
     {
       id: "court-black",
       tag: "Short",
-      name: "REGATA PRETO COM BRANCO",
+      name: "REGATA PRETO COM PRATA",
       description: "Base preta com detalhes dourados para combinar com a camisa principal.",
       price: 100,
       visualClass: "gold-core",
@@ -106,7 +104,7 @@ export const defaultStoreContent = {
     {
       id: "short-fem-brisa",
       tag: "Feminino",
-      name: "Short Brisa Court",
+      name: "SHORT FEMININO PRETO COM PRATA",
       description: "Short feminino de cintura alta com tecido firme e liberdade para salto e defesa.",
       price: 86.9,
       visualClass: "gold-pulse",
