@@ -68,7 +68,7 @@ export const defaultStoreContent = {
     {
       id: "ventania",
       tag: "Regata",
-      name: "REGATA PRETO COM DOURADO",
+      name: "MANGA CURTA PRETO COM DOURADO",
       description: "Leve, respiravel e pensada para manter a mesma linguagem visual da colecao.",
       price: 89.9,
       visualClass: "graphite-wave",
