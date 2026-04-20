@@ -1,4 +1,5 @@
 import { defaultStoreContent } from "../data/storeContent";
+import { stripBasePath, withBasePath } from "./assets";
 
 const STORAGE_KEY = "reidoshark-store-content";
 const ADMIN_SESSION_KEY = "reidoshark-admin-auth";
@@ -47,8 +48,8 @@ function clone(value) {
 function applyDefaultImageMigrations(content) {
   const nextContent = clone(content ?? {});
 
-  if (nextContent.heroSpotlight?.image === LEGACY_HERO_IMAGE) {
-    nextContent.heroSpotlight.image = HERO_IMAGE;
+  if (stripBasePath(nextContent.heroSpotlight?.image) === LEGACY_HERO_IMAGE) {
+    nextContent.heroSpotlight.image = withBasePath(HERO_IMAGE);
   }
 
   if (!Array.isArray(nextContent.products)) {
@@ -58,13 +59,13 @@ function applyDefaultImageMigrations(content) {
   nextContent.products = nextContent.products.map((product) => {
     const migration = PRODUCT_IMAGE_MIGRATIONS[product?.id];
 
-    if (!migration || product?.image !== migration.oldImage) {
+    if (!migration || stripBasePath(product?.image) !== migration.oldImage) {
       return product;
     }
 
     return {
       ...product,
-      image: migration.newImage,
+      image: withBasePath(migration.newImage),
     };
   });
 
@@ -90,6 +91,17 @@ function ensureStringArray(values, fallback = []) {
     .filter(Boolean);
 }
 
+function normalizeProductSizes(sizes, category) {
+  const nextSizes = ensureStringArray(sizes);
+
+  if (category === "acessorio") {
+    return nextSizes;
+  }
+
+  const filteredSizes = nextSizes.filter((size) => size.toUpperCase() !== "PP");
+  return filteredSizes.length ? filteredSizes : nextSizes;
+}
+
 function normalizePair(item, fallback = { label: "", value: "" }) {
   return {
     label: ensureString(item?.label, fallback.label),
@@ -112,6 +124,8 @@ function normalizeContactItem(item, fallback = { title: "", lines: [] }) {
 }
 
 function normalizeProduct(product, fallbackProduct) {
+  const category = ensureString(product?.category, fallbackProduct.category);
+
   return {
     id: ensureString(product?.id, fallbackProduct.id),
     tag: ensureString(product?.tag, fallbackProduct.tag),
@@ -119,10 +133,10 @@ function normalizeProduct(product, fallbackProduct) {
     description: ensureString(product?.description, fallbackProduct.description),
     price: ensureNumber(product?.price, fallbackProduct.price),
     visualClass: ensureString(product?.visualClass, fallbackProduct.visualClass),
-    image: ensureString(product?.image, fallbackProduct.image),
-    category: ensureString(product?.category, fallbackProduct.category),
+    image: withBasePath(ensureString(product?.image, fallbackProduct.image)),
+    category,
     gender: ensureString(product?.gender, fallbackProduct.gender),
-    sizes: ensureStringArray(product?.sizes, fallbackProduct.sizes),
+    sizes: normalizeProductSizes(product?.sizes ?? fallbackProduct.sizes, category),
   };
 }
 
@@ -177,7 +191,7 @@ export function normalizeStoreContent(content) {
       name: ensureString(migratedContent?.store?.name, defaults.store.name),
       shortName: ensureString(migratedContent?.store?.shortName, defaults.store.shortName),
       initials: ensureString(migratedContent?.store?.initials, defaults.store.initials),
-      logo: ensureString(migratedContent?.store?.logo, defaults.store.logo),
+      logo: withBasePath(ensureString(migratedContent?.store?.logo, defaults.store.logo)),
       tagline: ensureString(migratedContent?.store?.tagline, defaults.store.tagline),
       heroEyebrow: ensureString(migratedContent?.store?.heroEyebrow, defaults.store.heroEyebrow),
       heroTitle: ensureString(migratedContent?.store?.heroTitle, defaults.store.heroTitle),
@@ -213,7 +227,7 @@ export function normalizeStoreContent(content) {
         migratedContent?.heroSpotlight?.visualClass,
         defaults.heroSpotlight.visualClass
       ),
-      image: ensureString(migratedContent?.heroSpotlight?.image, defaults.heroSpotlight.image),
+      image: withBasePath(ensureString(migratedContent?.heroSpotlight?.image, defaults.heroSpotlight.image)),
     },
     categories: Array.isArray(migratedContent?.categories) && migratedContent.categories.length
       ? migratedContent.categories.map((item, index) =>
