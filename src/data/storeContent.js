@@ -66,6 +66,18 @@ export const defaultStoreContent = {
       sizes: ["P", "M", "G", "GG"],
     },
     {
+      id: "camisa-masc-padrao-dourado",
+      tag: "Camisa",
+      name: "CAMISA MASCULINA PADRAO DOURADO",
+      description: "Modelo masculino com base escura e grafismos dourados para destacar a colecao na areia.",
+      price: 100,
+      visualClass: "gold-core",
+      image: withBasePath("/products/masculino-padraodourado.jpeg"),
+      category: "camisa",
+      gender: "masculino",
+      sizes: ["P", "M", "G", "GG"],
+    },
+    {
       id: "ventania",
       tag: "Regata",
       name: "MANGA CURTA PRETO COM DOURADO",
