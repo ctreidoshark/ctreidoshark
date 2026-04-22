@@ -114,18 +114,6 @@ export const defaultStoreContent = {
       sizes: ["P", "M", "G", "GG"],
     },
     {
-      id: "short-fem-brisa",
-      tag: "Feminino",
-      name: "SHORT FEMININO PRETO COM PRATA",
-      description: "Short feminino de cintura alta com tecido firme e liberdade para salto e defesa.",
-      price: 86.9,
-      visualClass: "gold-pulse",
-      image: withBasePath("/products/short-feminino.png"),
-      category: "short",
-      gender: "feminino",
-      sizes: ["P", "M", "G"],
-    },
-    {
       id: "conjunto-preto-dourado-fem",
       tag: "Feminino",
       name: "CONJUNTO FEMININO PRETO COM DOURADO",
