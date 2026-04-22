@@ -96,7 +96,7 @@ export const defaultStoreContent = {
       description: "Padrao respiravel para treino no calor, com recortes contrastantes e toque macio.",
       price: 90,
       visualClass: "graphite-wave",
-      image: withBasePath("/products/masculino-padraopreto.jpeg"),
+      image: withBasePath("/products/regata-preta-branco-masculino.jpeg"),
       category: "regata",
       gender: "masculino",
       sizes: ["P", "M", "G", "GG"],
